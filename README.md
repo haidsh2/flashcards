@@ -10,8 +10,11 @@ This repository contains a Flutter-based mobile flashcard application inspired b
 
 ## Local Development
 1. Install [Flutter](https://docs.flutter.dev/get-started/install)
-2. Run `flutter pub get` inside the `app` directory
-3. Launch the app with `flutter run`
+2. From the `app` directory run `flutter create .` to generate the
+   platform folders (`ios/` and `android/`). This repository keeps
+   those folders out of version control to stay lightweight.
+3. Run `flutter pub get` inside the `app` directory
+4. Launch the app with `flutter run`
 
 ## Directory Structure
 ```
@@ -26,8 +29,16 @@ sample_decks/      Example CSV decks
 ```
 
 ## Building for iOS/Android
-- Android: `flutter build apk`
-- iOS: `flutter build ios`
+Because the platform folders are generated locally, make sure they
+exist before running any build commands. You can regenerate them with
+`flutter create .` inside the `app` directory if needed.
+
+- Android: `flutter build apk` from the `app` directory
+- iOS: `flutter build ios` from the `app` directory
+
+### CI note
+If using a CI service such as Codemagic, set the working directory to
+`app` so that the `pubspec.yaml` is detected correctly.
 
 ## Future Enhancements
 - Cloud sync with Firebase or Supabase
